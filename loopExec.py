@@ -1,4 +1,5 @@
 import datetime
+import sys
 
 def loopExecution():
     n=datetime.datetime.now()
@@ -6,5 +7,5 @@ def loopExecution():
     print(n)
 
 loopExecution()
-print(Num1+Num2)
+print(sys.argv[1]+sys.argv[2])
 
