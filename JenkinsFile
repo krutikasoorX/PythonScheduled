@@ -3,6 +3,10 @@ pipeline {
   triggers {
         cron('*/5 * * * *')
     }
+  environment {
+        Num1 = 9
+        Num2=80
+    }
   stages {
     stage('version') {
       steps {
