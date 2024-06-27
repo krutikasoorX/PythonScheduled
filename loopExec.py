@@ -6,4 +6,5 @@ def loopExecution():
     print(n)
 
 loopExecution()
+print(Num1+Num2)
 
