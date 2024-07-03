@@ -10,12 +10,12 @@ pipeline {
   stages {
     stage('version') {
       steps {
-        sh 'python --version'
+        bat 'python --version'
       }
     }
     stage('hello') {
       steps {
-        sh 'python loopExec.py ${Num1} ${Num2}'
+        bat 'python loopExec.py ${Num1} ${Num2}'
       }
     }
   }
