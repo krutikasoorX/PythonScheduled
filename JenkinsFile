@@ -1,22 +1,22 @@
 pipeline {
-  agent any
-  triggers {
+    agent any
+    triggers {
         cron('*/5 * * * *')
     }
-  environment {
-        Num1 = 9
-        Num2=80
+    environment {
+        Num1 = '9'
+        Num2 = '80'
     }
-  stages {
-    stage('version') {
-      steps {
-        bat 'python --version'
-      }
+    stages {
+        stage('version') {
+            steps {
+                bat 'python --version'
+            }
+        }
+        stage('hello') {
+            steps {
+                bat "python loopExec.py ${Num1} ${Num2}"
+            }
+        }
     }
-    stage('hello') {
-      steps {
-        bat 'python loopExec.py ${Num1} ${Num2}'
-      }
-    }
-  }
 }
