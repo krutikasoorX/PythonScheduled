@@ -4,18 +4,19 @@ pipeline {
         cron('*/5 * * * *')
     }
     environment {
+        PYTHON_HOME = 'C:\Users\Admin\AppData\Local\Programs\Python\Python311'
         Num1 = '9'
         Num2 = '80'
     }
     stages {
         stage('version') {
             steps {
-                bat 'python --version'
+                bat "${PYTHON_HOME}\\python --version"
             }
         }
         stage('hello') {
             steps {
-                bat "python loopExec.py ${Num1} ${Num2}"
+                bat "${PYTHON_HOME}\\python loopExec.py ${Num1} ${Num2}"
             }
         }
     }
