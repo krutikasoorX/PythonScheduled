@@ -18,13 +18,13 @@ pipeline {
                 echo 'Running Python version...'
                 script{
                     docker.image('node').inside('-v /var/run/docker.sock:/var/run/docker.sock -w ' + pwd()) {
-                    sh "python --version"}}
+                    bat "python --version"}}
             }
         }
         stage('Hello') {
             steps {
                 echo 'Running hello script...'
-                sh "python -x loopExec.py ${env.Num1} ${env.Num2}"
+                bat "python -x loopExec.py ${env.Num1} ${env.Num2}"
             }
         }
     }
