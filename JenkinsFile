@@ -24,8 +24,10 @@ pipeline {
         stage('Hello') {
             steps {
                 echo 'Running hello script...'
-                bat "python -x loopExec.py ${env.Num1} ${env.Num2}"
-            }
+                script{
+                    docker.image('node').inside('-v /var/run/docker.sock:/var/run/docker.sock -w ' + pwd()) {
+                    bat "python -x loopExec.py ${env.Num1} ${env.Num2}"
+            }}
         }
     }
-}
+}}
