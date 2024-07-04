@@ -1,7 +1,7 @@
 pipeline {
     agent {
         docker {
-            image 'latest'
+            image 'node'
             // Add other Docker configuration options as needed
         }
     }
