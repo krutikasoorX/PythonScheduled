@@ -1,33 +1,26 @@
 pipeline {
-    agent {
-        docker {
-            image 'ubuntu'
-        }
-    }
-    triggers {
-        cron('*/5 * * * *')
-    }
+    agent any
     environment {
+        PATH = "C://Users/Admin/AppData/Local/Programs/Python/Python311;C://Windows/System32;"  // Adjust the Python path as per your installation
         Num1 = '9'
         Num2 = '80'
         HOME="."
     }
+
     stages {
-        stage('Version') {
+        stage('Checkout') {
             steps {
-                echo 'Running Python version...'
-                script{
-                    docker.image('ubuntu').inside('-v /var/run/docker.sock:/var/run/docker.sock -w ' + pwd()) {
-                    bat "python --version"}}
+
+                // Checkout the GitHub repository
+                git branch: 'main', credentialsId: '8ce46a16-a3a9-4ff5-8338-ffdc1ea7e4b0', url: 'https://github.com/krutikasoorX/PythonScheduled.git'
             }
         }
-        stage('Hello') {
+
+        stage('Run Python Script') {
             steps {
-                echo 'Running hello script...'
-                script{
-                    docker.image('ubuntu').inside('-v /var/run/docker.sock:/var/run/docker.sock -w ' + pwd()) {
-                    bat "python -x loopExec.py ${env.Num1} ${env.Num2}"
-            }}
+                // Assuming Python is installed on the Jenkins agent
+                bat 'python loopExec.py'
+            }
         }
     }
-}}
+}
