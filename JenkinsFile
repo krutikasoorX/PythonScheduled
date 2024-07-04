@@ -1,6 +1,6 @@
 pipeline {
     agent{
-    docker{
+    docker{image : 'c73f7d8602800cf6fb88289039f86de31e6ab85d9bf5b358e032e889f2853a2e'}
     triggers {
         cron('*/5 * * * *')
     }
@@ -23,4 +23,4 @@ pipeline {
             }
         }
     }
-}}
+}
