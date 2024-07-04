@@ -10,6 +10,7 @@ pipeline {
     environment {
         Num1 = '9'
         Num2 = '80'
+        HOME="."
     }
     stages {
         stage('Version') {
