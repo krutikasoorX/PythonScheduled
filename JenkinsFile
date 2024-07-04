@@ -1,25 +1,28 @@
 pipeline {
-    agent{
-    docker{image 'jenkins/jenkins: latest'}
+    agent {
+        docker {
+            image 'jenkins/jenkins:latest'
+            // Add other Docker configuration options as needed
+        }
+    }
     triggers {
         cron('*/5 * * * *')
     }
     environment {
-        
         Num1 = '9'
         Num2 = '80'
     }
     stages {
-        stage('version') {
+        stage('Version') {
             steps {
-                 echo 'Running Python version...'
-                 bat "python --version"
+                echo 'Running Python version...'
+                bat "python --version"
             }
         }
-        stage('hello') {
+        stage('Hello') {
             steps {
                 echo 'Running hello script...'
-                bat "python loopExec.py ${Num1} ${Num2}"
+                bat "python loopExec.py ${env.Num1} ${env.Num2}"
             }
         }
     }
