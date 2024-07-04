@@ -1,7 +1,7 @@
 pipeline {
     agent {
         docker {
-            image 'node'
+            image 'ubuntu'
         }
     }
     triggers {
@@ -17,7 +17,7 @@ pipeline {
             steps {
                 echo 'Running Python version...'
                 script{
-                    docker.image('node').inside('-v /var/run/docker.sock:/var/run/docker.sock -w ' + pwd()) {
+                    docker.image('ubuntu').inside('-v /var/run/docker.sock:/var/run/docker.sock -w ' + pwd()) {
                     bat "python --version"}}
             }
         }
@@ -25,7 +25,7 @@ pipeline {
             steps {
                 echo 'Running hello script...'
                 script{
-                    docker.image('node').inside('-v /var/run/docker.sock:/var/run/docker.sock -w ' + pwd()) {
+                    docker.image('ubuntu').inside('-v /var/run/docker.sock:/var/run/docker.sock -w ' + pwd()) {
                     bat "python -x loopExec.py ${env.Num1} ${env.Num2}"
             }}
         }
