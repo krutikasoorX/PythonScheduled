@@ -4,7 +4,7 @@ pipeline {
         cron('*/5 * * * *')
     }
     environment {
-        PYTHON_EXEC = 'C:\Users\Admin\AppData\Local\Programs\Python\Python311\python.exe'
+        
         Num1 = '9'
         Num2 = '80'
     }
@@ -12,13 +12,13 @@ pipeline {
         stage('version') {
             steps {
                  echo 'Running Python version...'
-                 bat "${PYTHON_EXEC} --version"
+                 bat "python --version"
             }
         }
         stage('hello') {
             steps {
                 echo 'Running hello script...'
-                bat "${PYTHON_EXEC} loopExec.py ${Num1} ${Num2}"
+                bat "python loopExec.py ${Num1} ${Num2}"
             }
         }
     }
