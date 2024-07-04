@@ -16,13 +16,13 @@ pipeline {
         stage('Version') {
             steps {
                 echo 'Running Python version...'
-                sh "python --version"
+                bat "python --version"
             }
         }
         stage('Hello') {
             steps {
                 echo 'Running hello script...'
-                sh "python loopExec.py ${env.Num1} ${env.Num2}"
+                bat "python loopExec.py ${env.Num1} ${env.Num2}"
             }
         }
     }
