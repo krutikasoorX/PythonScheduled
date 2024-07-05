@@ -6,6 +6,9 @@ pipeline {
         Num2 = '80'
         HOME="."
     }
+    triggers {
+        cron('*/5 * * * *')  // Run every 5 minutes
+    }
 
     stages {
         stage('Checkout') {
